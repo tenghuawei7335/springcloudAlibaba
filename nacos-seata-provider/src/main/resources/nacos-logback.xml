@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false" scan="false"  packagingData="true">
+
+    <appender name="CONFIG_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/nacos/config.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>E:/nacos/config.log.%i</fileNamePattern>
+            <maxIndex>${JM.LOG.RETAIN.COUNT:-7}</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${JM.LOG.FILE.SIZE:-10MB}</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%-5t:%c{2}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="NAMING_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/nacos/naming.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>E:/nacos/naming.log.%i</fileNamePattern>
+            <maxIndex>${JM.LOG.RETAIN.COUNT:-7}</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${JM.LOG.FILE.SIZE:-10MB}</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%-5t:%c{2}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REMOTE_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/nacos/remote.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>E:/nacos/remote.log.%i</fileNamePattern>
+            <maxIndex>${JM.LOG.RETAIN.COUNT:-7}</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${JM.LOG.FILE.SIZE:-10MB}</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%-5t:%c{2}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.alibaba.nacos.client" level="${com.alibaba.nacos.config.log.level:-info}"
+            additivity="false">
+        <appender-ref ref="CONFIG_LOG_FILE"/>
+    </logger>
+
+
+    <Logger name="com.alibaba.nacos.common.remote.client" level="${com.alibaba.nacos.log.level:-info}"
+            additivity="false">
+        <appender-ref ref="REMOTE_LOG_FILE"/>
+    </Logger>
+
+    <Logger name="com.alibaba.nacos.shaded.io.grpc" level="${com.alibaba.nacos.log.level:-info}"
+            additivity="false">
+        <appender-ref ref="REMOTE_LOG_FILE"/>
+    </Logger>
+
+    <logger name="com.alibaba.nacos.client.config" level="${com.alibaba.nacos.config.log.level:-info}"
+            additivity="false">
+        <appender-ref ref="CONFIG_LOG_FILE"/>
+    </logger>
+
+    <logger name="com.alibaba.nacos.client.naming" level="${com.alibaba.nacos.naming.log.level:-info}"
+            additivity="false">
+        <appender-ref ref="NAMING_LOG_FILE"/>
+    </logger>
+
+</configuration>

@@ -1,0 +1,15 @@
+2022-05-01 15:46:20.089  INFO 356 --- [main] c.example.NacosProviderApplicationTests  : The following profiles are active: dev
+2022-05-01 15:46:20.837  INFO 356 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5dcd23a5-9fab-3850-9b66-f79c44810634
+2022-05-01 15:46:21.029  INFO 356 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-05-01 15:46:21.498  INFO 356 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-05-01 15:46:22.248  WARN 356 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-05-01 15:46:22.248  INFO 356 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-01 15:46:22.248  WARN 356 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-05-01 15:46:22.248  INFO 356 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-05-01 15:46:22.716  INFO 356 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-01 15:46:24.642  INFO 356 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2022-05-01 15:46:24.642  INFO 356 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService
+2022-05-01 15:46:26.574  INFO 356 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2022-05-01 15:46:26.723  INFO 356 --- [main] c.example.NacosProviderApplicationTests  : Started NacosProviderApplicationTests in 11.436 seconds (JVM running for 13.025)
+2022-05-01 15:46:27.165  INFO 356 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-05-01 15:46:27.165  INFO 356 --- [Thread-6] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

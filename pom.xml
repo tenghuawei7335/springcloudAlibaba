@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <!--申明本模块是一个springboot项目,并用来控制所有依赖包的版本-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--本模块-->
+    <groupId>com.example</groupId>
+    <artifactId>springcloudalibabademo1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>springcloudalibabademo1</name>
+    <description>springcloudalibabademo1</description>
+
+    <!--开发者信息-->
+    <developers>
+        <developer>
+            <id>thw</id>
+            <name>滕华伟</name>
+            <url>https://gitee.com/tenghuawei</url>
+            <email>107393229@qq.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>UTC+0800</timezone>
+        </developer>
+    </developers>
+
+    <!--子模块-->
+     <modules>
+         <module>nacos-seata-provider</module>
+         <module>seata-order-service2001</module>
+         <module>seata-storage-service2002</module>
+         <module>seata-account-service2003</module>
+         <module>dataSource-service</module>
+     </modules>
+
+    <!--统一版本管理-->
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <mysql-connector.version>8.0.16</mysql-connector.version>
+        <mybatis-spring.version>1.3.2</mybatis-spring.version>
+        <!--核心-->
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+    </properties>
+
+    <!--项目变成springcloud，相当于是springboot的parent-->
+    <dependencyManagement>
+        <dependencies>
+            <!--spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--lombk-->
+        <!-- <optional>标签：当其它项目依赖 该标签所在的项目时，不会再将该项目中拥有<optional>true</option>的依赖引入；-->
+        <!--当某各工程很庞大 或 可能与其他工程的jar包冲突时，建议加上<optional>true</optional>，以此便可以节省开销，同时可以预防依赖冲突；-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--maven-plugin插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!--编译跳过test测试文件检查的生命周期-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+        <resources>
+            <!-- 该包下编译之后包含xml，txt,properties -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <!-- 该包下编译之后包含xml和properties -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+
+    </build>
+
+    <!--================================================================================================-->
+    <!--单独为这个微服务配置仓库-->
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>alimaven</id>-->
+<!--            <url>https://maven.aliyun.com/repository/public</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>alimaven</id>-->
+<!--            <url>https://maven.aliyun.com/repository/public</url>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
+    <!--================================================================================================-->
+
+    <!-- ===============================================================================-->
+
+</project>
